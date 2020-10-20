@@ -1,4 +1,3 @@
-
 //for (let i = 1; i <= 5; i++) { 
 //  for (let j = 1; j <= 10; j++) {
 //    console.log('i and j are ', i, j);
@@ -71,17 +70,82 @@
 //
 //generateParagraphs();
 
+// Count section and make navBar Buttons
 var sections = document.querySelectorAll('[data-nav]');
-        var uls = document.querySelector('ul');
-        const fragment = document.createDocumentFragment();
+var uls = document.querySelector('ul');
+const fragment = document.createDocumentFragment();
 
-        sections.forEach((sections, i) => {
-            const lis = document.createElement('li');
-            const anchs = document.createElement('a');
-            var links = document.createTextNode('Section' + (i + 1));
-            anchs.appendChild(links);
-            anchs.title = "Section" + (i + 1);
-            anchs.href = "#section" + (i + 1);
-            uls.appendChild(lis);
-            lis.appendChild(anchs);
-        });
+sections.forEach((sections, i) => {
+    const lis = document.createElement('li');
+    const anchs = document.createElement('a');
+    var links = document.createTextNode('Section' + (i + 1));
+    anchs.appendChild(links);
+    anchs.title = "Section" + (i + 1);
+    anchs.href = "#section" + (i + 1);
+    uls.appendChild(lis);
+    lis.appendChild(anchs);
+});
+
+
+// activate navBar
+var active_li = uls.querySelectorAll('li');
+const li_array = Array.from(active_li);
+
+li_array.forEach((active_li, i) => {
+    li_array[0].classList.add("active"); //Initial Activate li1
+    var active = document.getElementsByClassName('landing__container');
+    active[0].classList.add("active"); //Initial Activate section 1
+
+
+    li_array[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        const current = document.getElementsByClassName('active');
+        current[0].classList.remove('active');
+        li_array[i].classList.add('active');
+        //Activate section
+        var active_sect = document.getElementsByClassName('landing__container active');
+        active_sect[0].classList.remove('active');
+        active[i].classList.add('active');
+        active[i].scrollIntoView({});
+    });
+});
+
+
+var active_scrolls = document.getElementsByClassName('landing__container');
+var runOnScroll = function (evt) {
+    // not the most exciting thing, but a thing nonetheless
+    active_scrolls.getBoundingClientRect();
+};
+
+var active_scroll = Array.prototype.slice.call(active_scrolls)
+//console.log(active_scroll);
+active_scroll.forEach((active_scroll, i) => {
+window.addEventListener("scroll", runOnScroll, {passive: true});
+})
+
+var sections_nu = document.getElementsByTagName('section');
+const num = Array.from(sections_nu);
+
+//num.forEach((num,i)=>{
+//    var section_scroll = document.getElementById('section'+ (i+1));
+//    var x = section_scroll.scrollIntoView();
+//    console.log(x);
+//})
+//
+//document.getElementById("section1").scrollIntoView({
+//  behavior: smooth | auto;
+//  block: start | center | end | nearest;
+//  inline: start | center | end | nearest;
+//});
+//var elmnt = document.getElementById("section");
+//var x = getelement.scrollIntoView();
+//console.log(elmnt);
+
+//active_sect = document.querySelectorAll('section');
+//const sect_array = Array.from(active_sect);
+//
+//active_sect.forEach((active_sect, i) => {
+//    console.log(active_sect[i]);
+//    //var topOfElement = active_sect[i].offsetTop - XX;
+//    //window.scroll({ top: topOfElement, behavior: "smooth" });
+//});
