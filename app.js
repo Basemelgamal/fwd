@@ -111,20 +111,12 @@ li_array.forEach((active_li, i) => {
 });
 
 
-var active_scrolls = document.getElementsByClassName('landing__container');
-var runOnScroll = function (evt) {
-    // not the most exciting thing, but a thing nonetheless
-    active_scrolls.getBoundingClientRect();
-};
-
-var active_scroll = Array.prototype.slice.call(active_scrolls)
-//console.log(active_scroll);
-active_scroll.forEach((active_scroll, i) => {
-window.addEventListener("scroll", runOnScroll, {passive: true});
-})
-
-var sections_nu = document.getElementsByTagName('section');
-const num = Array.from(sections_nu);
+var active_scrolls = document.querySelectorAll('.landing__container');
+const scroll_sections = Array.from(active_scrolls);
+//console.log(scroll_sections[0]);
+var x = scroll_sections[0].getBoundingClientRect();
+console.log(x);
+//active_scrolls.getBoundingClientRect();
 
 //num.forEach((num,i)=>{
 //    var section_scroll = document.getElementById('section'+ (i+1));
