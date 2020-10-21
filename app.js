@@ -111,13 +111,24 @@ li_array.forEach((active_li, i) => {
 });
 
 
+// var active_scrolls = document.querySelectorAll('.landing__container');
+// const scroll_sections = Array.from(active_scrolls);
+// //console.log(scroll_sections[0]);
+// var x = scroll_sections[0].getBoundingClientRect();
+// console.log(x);
+//active_scrolls.getBoundingClientRect();
 var active_scrolls = document.querySelectorAll('.landing__container');
 const scroll_sections = Array.from(active_scrolls);
-//console.log(scroll_sections[0]);
-var x = scroll_sections[0].getBoundingClientRect();
+var ba5 = scroll_sections[0].getBoundingClientRect();
+x = ba5.top;
+x = Math.floor(x);
 console.log(x);
-//active_scrolls.getBoundingClientRect();
-
+if(x === 0 ){
+    var active_scrolling = document.getElementsByClassName('landing__container active');
+        console.log(active_scrolling);
+        active_sect[0].classList.remove('active');
+        active[i].classList.add('active');
+}
 //num.forEach((num,i)=>{
 //    var section_scroll = document.getElementById('section'+ (i+1));
 //    var x = section_scroll.scrollIntoView();
