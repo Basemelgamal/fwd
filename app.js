@@ -129,6 +129,37 @@ if(x === 0 ){
         active_sect[0].classList.remove('active');
         active[i].classList.add('active');
 }
+
+//section navbar while scrolling
+
+var active_croll_sect = document.getElementsByClassName('landing__container active');
+window.addEventListener('scroll', function () {
+
+
+
+    var active_croll_sect = document.querySelectorAll('section');
+    const active_scroll = Array.from(active_croll_sect);
+    active_scroll.forEach((scroll_sect, i) => {
+        var active_scrolls = document.querySelector('#section' + (i + 1));
+        var bounding = active_scrolls.getBoundingClientRect();
+        if (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
+
+            var active_sect = document.getElementsByClassName('landing__container active');
+            active_sect[0].classList.remove('.active');
+            console.log(active_sect);
+            const current = document.querySelector('.active');
+            console.log(current);
+            current.classList.remove('active');
+            li_array[i].classList.add('active');
+        } else {
+            //            console.log(active_scroll);
+        }
+    });
+})
 //num.forEach((num,i)=>{
 //    var section_scroll = document.getElementById('section'+ (i+1));
 //    var x = section_scroll.scrollIntoView();
