@@ -148,11 +148,12 @@ window.addEventListener('scroll', function () {
             bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
             bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
 
-            var active_sect = document.getElementsByClassName('landing__container active');
-            active_sect[0].classList.remove('.active');
-            console.log(active_sect);
+            var active_sect = document.querySelector('.landing__container.active');
+            active_sect.classList.remove('active');
+            var x = active_scrolls.querySelector('.landing__container');
+            x.classList.add('active');
             const current = document.querySelector('.active');
-            console.log(current);
+            
             current.classList.remove('active');
             li_array[i].classList.add('active');
         } else {
